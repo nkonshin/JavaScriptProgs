@@ -1,0 +1,48 @@
+<html lang='ru'>
+
+<head>
+    <title>RK1 Array of digits</title>
+    <meta charset='utf=8'>
+
+    <script>
+        function process() {
+            var input = document.querySelector("[name='arr']")
+            var resultDom = document.querySelector("#result");
+            var inputValue = input.value;
+            var increment = 0;
+            var array = inputValue.split(" ");
+
+            array.forEach(function (item, index) {
+                if (item % 5 == 0 && item % 9 != 0) {
+                    increment++;
+                }
+            })
+            if(increment != 0) {resultDom.textContent = array}
+            else 
+            {if (array.length % 2 == 0) {
+                array[array.length - 1] = increment;
+            } else {
+                array[array.length - 2] = increment;
+            }}
+
+            // Если надо массив
+            resultDom.textContent = array
+        }
+    </script>
+</head>
+
+<body>
+    <div id='header'>
+        Коньшин Никита Михайлович<br />
+        Иу6-35Б<br />
+        Билет N 14<br />
+        Дан массив чисел arr_m. Найти количество элементов массива одновременно кратных 5 и не кратных 9.
+        Поместить полученное число на место последнего элемента массива с четным индексом. Вводить только числа.
+    </div>
+    <input type='text' name='arr' value='1 2 3 4'>
+    <br />
+    <input type='submit' value='Решить задание' name='send' onClick='process()'>
+    <div id='result'></div>
+</body>
+
+</html>

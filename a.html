@@ -1,0 +1,63 @@
+
+<html lang='ru'>
+	<head>
+		<title>Array of digits</title>
+		<meta charset='utf=8'>
+		<script>
+			function valid(arr) {
+				for (let i in arr) {
+					if (arr[i] != +arr[i]) return false;
+				}
+				return true;
+			}
+			
+			function eraseTrailingSpaces(str) {
+				while (str.indexOf("  ") != -1)
+					str = str.replace("  ", " ");
+				
+				if (str[0] == ' ') str = str.substr(1);
+				if (str[str.length - 1] == ' ') str = str.substr(0, str.length - 1);
+			
+				return str;
+			}
+			
+			function countArray(arr_b) {
+				let num = arr_b.filter(el => !(el % 3)).length;
+				let aboveZero = arr_b.filter(el => el > 0);
+				let denominator = aboveZero[aboveZero.length - 1];
+				if (!denominator) return "Division by zero";
+				return  num / denominator;
+			}
+		
+			function process() {
+				let res = "";
+				let input = document.getElementsByName("arr")[0].value;
+				let value = eraseTrailingSpaces(input);
+				let arr = value.split(" ");
+				if (!valid(arr)) {
+					res = "Invalid data: only numbers, spaces and dots are allowed";
+				}
+				else {
+					res = countArray(arr.map(
+						function(cur, i, arr) {
+							return +cur;
+						}
+					));
+				}
+				document.getElementById("result").innerHTML = "Input: " + input + "<br />Result: " + res;
+			}
+		</script>
+	</head>
+	<body>
+		<div id='header'>
+			Коньшин Никита Михайлович<br />
+			Иу6-35Б<br />
+			Билет N<br />
+			...
+		</div>
+		<input type='text' name='arr' value='1 2 3 4'>
+		<br />
+		<input type='submit' value='Отправить' name='send' onClick='process()'>
+		<div id='result'></div>
+	</body>
+</html>

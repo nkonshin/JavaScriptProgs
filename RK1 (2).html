@@ -1,0 +1,46 @@
+<html lang='ru'>
+
+<head>
+    <title>Array of digits</title>
+    <meta charset='utf=8'>
+</head>
+
+<body>
+    <div id='header'>
+        Коньшин Никита Михайлович<br />
+        Группа<br />
+        Билет N<br />
+        ...
+    </div>
+    <input type='text' name='arr' value='1 2 3 4 5 5'>
+    <br />
+    <input type='submit' value='Решить задание' name='send' onClick='process()'>
+    <div id='result'></div>
+
+    <script type="text/javascript">
+        const process = () => {
+            const arr = document.querySelector('input[name="arr"]').value.split(' ').map(item => Number(item)),
+                res = document.querySelector('#result');
+            const filtered = arr.filter(item => {
+                if (item % 5 === 0 && item % 9 !== 0) {
+                    return item
+                }
+            });
+            const counter = filtered.length;
+            console.log(counter)
+            if (arr.length === 1) {
+                arr.push(counter)
+            } else if (arr.length % 2 === 0) {
+                arr[arr.length - 1] = counter
+            } else {
+                arr[arr.length - 2] = counter
+            }
+
+            res.textContent = arr;
+
+        }
+    </script>
+
+</body>
+
+</html>
