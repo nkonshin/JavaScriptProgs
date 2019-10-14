@@ -4,19 +4,18 @@ let key1 = prompt("Введите обязательную статью расх
 let key2 = prompt("Во сколько обойдется?");
 let key3 = prompt("Введите вторую обязательную статью расходов в этом месяце");
 let key4 = prompt("Во сколько обойдется?");
-let arr = [];
-let expenses = {
-    key1: key2,
-    key3: key4
-};
+
 let optionalExpenses = {};
 let AppData = {
     money1: money,
     time1: time,
-    expenses,
-    optionalExpenses,
-    income: arr,
+    expenses: {},
+    optionalExpenses: {},
+    income: [],
     savings: false
 };
-let budget = (money - expenses.key1 - expenses.key3) / 30;
-alert (budget);
+
+appData.expenses.key1 = key2;
+appData.expenses.key3 = key4;
+
+alert((money - appData.expenses.key1 - appData.expenses.key3) / 30);
